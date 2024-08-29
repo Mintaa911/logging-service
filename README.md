@@ -24,8 +24,8 @@ This Logging System is designed as a standalone microservice using Kafka and Nes
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/Mintaa911/logging-system.git
-   cd logging-system
+   git clone https://github.com/Mintaa911/logging-service.git
+   cd logging-service
 
 2. **Install Dependencies**
 
