@@ -36,41 +36,6 @@ This Logging System is designed as a standalone microservice using Kafka and Nes
     ```
 3. **Setup kafka using docker compose**
 
-    Create docker-compose.yml file
-
-  ```bash
-  version: '2'
-
-  services:
-    zookeeper:
-      image: wurstmeister/zookeeper:latest
-      ports:
-        - "2181:2181"
-      networks:
-        - kafaka_default
-
-    kafka:
-      image: wurstmeister/kafka:latest
-      ports:
-        - "9092:9092"     # External port for clients
-      expose:
-        - "9093"          # Internal port for broker communication
-      environment:
-        KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka:9093,OUTSIDE://localhost:9092
-        KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
-        KAFKA_LISTENERS: INSIDE://0.0.0.0:9093,OUTSIDE://0.0.0.0:9092
-        KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
-        KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-        KAFKA_CREATE_TOPICS: "my-topic:1:1"
-      networks:
-        - kafaka_default
-
-
-    networks:
-      kafaka_default:
-        driver: bridge
-  ```
-
   Start Kafka and Zookeeper containers using Docker Compose:
 
   ```bash
